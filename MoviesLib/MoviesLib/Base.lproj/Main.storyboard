@@ -279,6 +279,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qa4-sy-pux">
                                 <rect key="frame" x="134" y="153" width="53" height="53"/>
                                 <state key="normal" image="play"/>
+                                <connections>
+                                    <action selector="playVideo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kwj-ga-x8J"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradient" translatesAutoresizingMaskIntoConstraints="NO" id="ZPq-iG-EEf">
                                 <rect key="frame" x="0.0" y="228" width="320" height="66"/>
@@ -286,6 +289,10 @@
                                     <constraint firstAttribute="height" constant="66" id="4m5-cl-xeG"/>
                                 </constraints>
                             </imageView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T2M-4f-Cp2">
+                                <rect key="frame" x="0.0" y="64" width="320" height="230"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8At-yr-658">
                                 <rect key="frame" x="16" y="298" width="288" height="33.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="28"/>
@@ -368,11 +375,13 @@
                             <constraint firstItem="Qa4-sy-pux" firstAttribute="centerY" secondItem="WqK-0L-c24" secondAttribute="centerY" id="He7-wP-zRV"/>
                             <constraint firstItem="G1h-jB-QLH" firstAttribute="top" secondItem="8At-yr-658" secondAttribute="bottom" constant="4" id="Lmh-cQ-D8V"/>
                             <constraint firstItem="QxK-ZM-7IG" firstAttribute="top" secondItem="qU8-yH-LT9" secondAttribute="bottom" constant="8" id="Lpv-2J-A5G"/>
+                            <constraint firstItem="T2M-4f-Cp2" firstAttribute="centerX" secondItem="WqK-0L-c24" secondAttribute="centerX" id="N8E-N2-5yy"/>
                             <constraint firstItem="ZPq-iG-EEf" firstAttribute="bottom" secondItem="WqK-0L-c24" secondAttribute="bottom" id="SIx-33-ZsY"/>
                             <constraint firstItem="Jt4-oH-Tdt" firstAttribute="top" secondItem="8At-yr-658" secondAttribute="bottom" constant="4" id="TI5-Kj-PLC"/>
                             <constraint firstItem="8At-yr-658" firstAttribute="leading" secondItem="WqK-0L-c24" secondAttribute="leading" constant="16" id="Y7T-81-2Dw"/>
                             <constraint firstItem="ZPq-iG-EEf" firstAttribute="leading" secondItem="WqK-0L-c24" secondAttribute="leading" id="aPa-4M-ceI"/>
                             <constraint firstItem="WqK-0L-c24" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="64" id="bLu-99-1sD"/>
+                            <constraint firstItem="T2M-4f-Cp2" firstAttribute="height" secondItem="WqK-0L-c24" secondAttribute="height" id="f8E-5g-Vem"/>
                             <constraint firstItem="8At-yr-658" firstAttribute="top" secondItem="WqK-0L-c24" secondAttribute="bottom" constant="4" id="fca-sK-FkB"/>
                             <constraint firstItem="QxK-ZM-7IG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ikF-H4-nzf"/>
                             <constraint firstItem="WqK-0L-c24" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="nGA-Ac-H9D"/>
@@ -380,6 +389,8 @@
                             <constraint firstItem="8At-yr-658" firstAttribute="trailing" secondItem="WqK-0L-c24" secondAttribute="trailing" constant="-16" id="rLW-Fe-qhE"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="QxK-ZM-7IG" secondAttribute="bottom" id="rkl-ao-1xG"/>
                             <constraint firstAttribute="trailing" secondItem="QxK-ZM-7IG" secondAttribute="trailing" id="sbP-o9-wEm"/>
+                            <constraint firstItem="T2M-4f-Cp2" firstAttribute="width" secondItem="WqK-0L-c24" secondAttribute="width" id="wRp-CD-wZc"/>
+                            <constraint firstItem="T2M-4f-Cp2" firstAttribute="centerY" secondItem="WqK-0L-c24" secondAttribute="centerY" id="zRn-zB-DSb"/>
                             <constraint firstItem="Jt4-oH-Tdt" firstAttribute="trailing" secondItem="8At-yr-658" secondAttribute="trailing" id="ztg-wK-bQq"/>
                         </constraints>
                         <variation key="default">
@@ -414,7 +425,9 @@
                         <outlet property="lbScore" destination="qU8-yH-LT9" id="jgI-zd-sac"/>
                         <outlet property="lbTitle" destination="8At-yr-658" id="Iw0-zN-3is"/>
                         <outlet property="lcButtonX" destination="0R9-Gr-CGa" id="Zgd-Zq-qHj"/>
+                        <outlet property="playVideo" destination="Qa4-sy-pux" id="XMi-uQ-55k"/>
                         <outlet property="tvSinopsis" destination="azx-6d-eB6" id="kTo-Ta-DXY"/>
+                        <outlet property="viTrailer" destination="T2M-4f-Cp2" id="jMa-5l-mWX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -655,6 +668,6 @@
         <image name="theaters" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iTS-rx-PBN"/>
+        <segue reference="ZfF-ks-rxq"/>
     </inferredMetricsTieBreakers>
 </document>
