@@ -22,8 +22,12 @@ class MovieViewController: UIViewController {
     @IBOutlet weak var lcButtonX: NSLayoutConstraint!
     @IBOutlet weak var viTrailer: UIView!
     
+    /*
+     Quando declaramos uma variávem optional - ? - temos que desembrulha-la sempre que usarmos
+     */
+    
     // MARK: Properties
-    var movie: Movie!
+    var movie: Movie! // Por isso aqui nós já desembrulhamos, para não ter que ficar fazendo isso toda hora, e tbm garantimos que vai existir
     var moviePlayer: AVPlayer! // Usamos quando queremos tocar audio/video e servev para tocar tanto local quanto remoto, i.e.: by URL/MP3, etc...
     var moviePlayerController: AVPlayerViewController! // Vai fornecer container com série de controles para conseguirmos manipular esse vídeo; poderíamos criar o nosso próprio mas esse nos ajudará
     
@@ -32,6 +36,11 @@ class MovieViewController: UIViewController {
         super.viewDidLoad()
         
         prepareVideo()
+        
+        // Toca automaticamente caso o usuário tenha escolhido nos settings do app
+        if UserDefaults.standard.bool(forKey: SettingsType.autoplay.rawValue) {
+            changeMovieStatus(play: true)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +57,11 @@ class MovieViewController: UIViewController {
         }
         tvSinopsis.text = movie.summary
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        changeMovieStatus(play: false)
+    }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         dismiss(animated: true, completion: nil)
@@ -61,7 +75,9 @@ class MovieViewController: UIViewController {
     
     func prepareVideo() {
         // Recuperar URL do vídeo
-        let url = Bundle.main.url(forResource: "logan-trailer", withExtension: "mp4")! // Sabemos que existe, então podemos desembrulha-la
+        // let url = Bundle.main.url(forResource: "logan-trailer", withExtension: "mp4")! // Sabemos que existe, então podemos desembrulha-la
+        
+        let url = URL(string: "http://goo.gl/8XmNn8")!
         
         moviePlayer = AVPlayer(url: url)
         moviePlayerController = AVPlayerViewController()
@@ -74,6 +90,35 @@ class MovieViewController: UIViewController {
     }
     
     @IBAction func playVideo(_ sender: UIButton) {
+        sender.isHidden = true
+        changeMovieStatus(play: true)
+    }
+    
+    func changeMovieStatus(play: Bool) {
+        viTrailer.isHidden = false
+        if play {
+            moviePlayer.play()
+        } else {
+            moviePlayer.pause()
+        }
     }
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
