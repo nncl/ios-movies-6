@@ -54,6 +54,8 @@
 		AC70C4F81E743C94005E598A /* TheaterAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC70C4F71E743C94005E598A /* TheaterAnnotation.swift */; };
 		AC70C4FC1E747752005E598A /* fiap.gpx in Resources */ = {isa = PBXBuildFile; fileRef = AC70C4FB1E747752005E598A /* fiap.gpx */; };
 		AC70C4FE1E748175005E598A /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC70C4FD1E748175005E598A /* WebViewController.swift */; };
+		ACC044B31E85D3800005A884 /* logan-trailer.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = ACC044B11E85D37F0005A884 /* logan-trailer.mp4 */; };
+		ACC044B41E85D3800005A884 /* music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ACC044B21E85D37F0005A884 /* music.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +108,8 @@
 		AC70C4F71E743C94005E598A /* TheaterAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TheaterAnnotation.swift; sourceTree = "<group>"; };
 		AC70C4FB1E747752005E598A /* fiap.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = fiap.gpx; sourceTree = "<group>"; };
 		AC70C4FD1E748175005E598A /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		ACC044B11E85D37F0005A884 /* logan-trailer.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "logan-trailer.mp4"; sourceTree = "<group>"; };
+		ACC044B21E85D37F0005A884 /* music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +222,8 @@
 			children = (
 				AC64CE821E70C8C600FD5EFF /* movies.json */,
 				AC70C4EE1E741D3A005E598A /* theaters.xml */,
+				ACC044B11E85D37F0005A884 /* logan-trailer.mp4 */,
+				ACC044B21E85D37F0005A884 /* music.mp3 */,
 			);
 			name = data;
 			sourceTree = "<group>";
@@ -286,6 +292,7 @@
 				07780D571E6D860E00BC3630 /* LaunchScreen.storyboard in Resources */,
 				AC64CEE21E70C98E00FD5EFF /* kongskull-wide.jpg in Resources */,
 				AC64CEDB1E70C98E00FD5EFF /* civilwar-small.jpg in Resources */,
+				ACC044B41E85D3800005A884 /* music.mp3 in Resources */,
 				AC70C4FC1E747752005E598A /* fiap.gpx in Resources */,
 				AC64CEE81E70C98E00FD5EFF /* madmax-wide.jpg in Resources */,
 				AC64CEE71E70C98E00FD5EFF /* madmax-small.jpg in Resources */,
@@ -300,6 +307,7 @@
 				AC64CE831E70C8C600FD5EFF /* movies.json in Resources */,
 				AC64CEDA1E70C98E00FD5EFF /* batmanvsuperman-wide.jpg in Resources */,
 				AC64CEE91E70C98E00FD5EFF /* rogueone-small.jpg in Resources */,
+				ACC044B31E85D3800005A884 /* logan-trailer.mp4 in Resources */,
 				AC64CEDC1E70C98E00FD5EFF /* civilwar-wide.jpg in Resources */,
 				AC64CEE01E70C98E00FD5EFF /* doctorstrange-wide.jpg in Resources */,
 				AC70C4EF1E741D3A005E598A /* theaters.xml in Resources */,

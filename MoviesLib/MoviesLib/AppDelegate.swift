@@ -15,6 +15,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        // Pega o que tem no bundle
+        //var appDefaults: [String: Any] = [:]
+        //appDefaults["colorscheme"] = 0
+        //appDefaults["autoplay"] = false
+        
+        if UserDefaults.standard.value(forKey: "colorscheme") == nil {
+            UserDefaults.standard.set(false, forKey: "autoplay")
+            UserDefaults.standard.set(0, forKey: "colorscheme")
+        }
+        
+        // UserDefaults.standard.register(defaults: appDefaults)
+        
         return true
     }
 
