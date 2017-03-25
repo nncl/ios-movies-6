@@ -4,3 +4,4 @@
 - Play audio
 - Work with Segmented Control
 - Get information from Core Data
+- Animation

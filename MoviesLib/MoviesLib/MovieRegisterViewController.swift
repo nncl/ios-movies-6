@@ -35,6 +35,18 @@ class MovieRegisterViewController: UIViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // self.ivPoster.transform = CGAffineTransform.init(scaleX: 0.0, y: 0.0)
+        
+        UIView.animate(withDuration: 1.5) {
+            // CGAffineTransform Gera um transform novo que é aplicado ao ivposter transform
+            // self.ivPoster.transform = CGAffineTransform.init(scaleX: 1.0, y: 1.0)
+            self.ivPoster.transform = CGAffineTransform.init(rotationAngle: CGFloat(M_PI))
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if movie != nil {

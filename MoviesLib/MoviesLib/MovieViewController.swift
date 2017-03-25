@@ -40,6 +40,25 @@ class MovieViewController: UIViewController {
         // Toca automaticamente caso o usuário tenha escolhido nos settings do app
         if UserDefaults.standard.bool(forKey: SettingsType.autoplay.rawValue) {
             changeMovieStatus(play: true)
+        } else {
+            // Do animation
+            let oldHeight = ivPoster.frame.size.height
+            ivPoster.frame.size.height = 0
+            
+            // Advanced animation: core graphics
+            // We'll keep it simple stupid
+            // Delay: dps de quanto tempo a animação vai acontecer
+            UIView.animate(withDuration: 0.75, delay: 0, options: .curveEaseInOut, animations: { 
+                
+                // TODO Estado final que queremos da animação, ex:
+                self.ivPoster.frame.size.height = oldHeight
+                
+            }, completion: { (success: Bool) in
+                // Terminou forçadamente ou naturalmente
+                // Naturalmente if true
+                print("Fim da animação", success)
+            })
+            // completion: quando termina a animação
         }
     }
     
