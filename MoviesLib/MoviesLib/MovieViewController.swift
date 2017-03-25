@@ -43,6 +43,8 @@ class MovieViewController: UIViewController {
         }
     }
     
+    // OS_ACTIVITY_MODE*** Google it
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //ivPoster.image = UIImage(named: movie.imageWide)

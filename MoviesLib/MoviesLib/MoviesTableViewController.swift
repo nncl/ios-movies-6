@@ -8,11 +8,13 @@
 
 import UIKit
 import CoreData
+import AVFoundation
 
 class MoviesTableViewController: UITableViewController {
 
     var fetchedResultController: NSFetchedResultsController<Movie>!
     var label: UILabel!
+    var backgroundMusicPlayer: AVAudioPlayer! // Remote audio, for local = AVPlayer
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +33,17 @@ class MoviesTableViewController: UITableViewController {
         label.textColor = .white
         
         loadMovies()
+        prepareMusic()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        backgroundMusicPlayer.stop()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        backgroundMusicPlayer.play()
     }
 
     override func didReceiveMemoryWarning() {
@@ -137,6 +150,14 @@ class MoviesTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    // MARK: - Methods
+    func prepareMusic() {
+        let url = Bundle.main.url(forResource: "music", withExtension: "mp3")!
+        backgroundMusicPlayer = try! AVAudioPlayer(contentsOf: url)
+        backgroundMusicPlayer.volume = 0.2
+        backgroundMusicPlayer.numberOfLoops = -1 // -1: infinite loop
+    }
 
 }
 
