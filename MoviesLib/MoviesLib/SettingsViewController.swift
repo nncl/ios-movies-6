@@ -18,9 +18,9 @@ class SettingsViewController: UIViewController {
 
     @IBOutlet weak var scColorScheme: UISegmentedControl!
     @IBOutlet weak var swAutoPlay: UISwitch!
-    
     @IBOutlet weak var ivBackground: UIImageView!
-    @IBOutlet weak var pickerView: UIPickerView!
+    var pickerView: UIPickerView!
+    @IBOutlet weak var tfFood: UITextField!
     
     var motionManager = CMMotionManager()
     var dataSource = [
@@ -46,8 +46,22 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        pickerView = UIPickerView()
+        pickerView.backgroundColor = .white
         pickerView.delegate = self
         pickerView.dataSource = self
+        //tfFood.inputView = pickerView // Trocando o teclado pelo picker view
+        
+        let toolBar = UIToolbar(frame: CGRect(x:0,y:0,width:self.view.frame.size.width, height: 44))
+        let btCancel = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
+        let btSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let btDone = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
+        toolBar.items = [btCancel, btSpace, btDone] // Adicionando na toolbar
+        
+        tfFood.inputView = pickerView
+        tfFood.inputAccessoryView = toolBar
+        
+        // tfFood.inputAccessoryView = pickerView // View que auxilia o teclado; add botões de confirmação de escolha de item
         
         // Detectar se device tem acelerometro e giroscopio
         
@@ -68,6 +82,15 @@ class SettingsViewController: UIViewController {
         
         // pickerView.selectedRow(inComponent: 0) // Recupera o item selecionado no picker view
         
+    }
+    
+    func cancel() {
+        tfFood.resignFirstResponder() // Some com o foco do tfield, fazendo o teclado sumir
+    }
+    
+    // Clica no outro botão do toolbar
+    func done() {
+        tfFood.text = dataSource[pickerView.selectedRow(inComponent: 0)]
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -99,6 +122,7 @@ extension SettingsViewController: UIPickerViewDelegate {
     //
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         print("Acabaram de comer ", dataSource[row])
+        tfFood.text = dataSource[row]
     }
     
 }
