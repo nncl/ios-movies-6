@@ -23,6 +23,13 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var pickerView: UIPickerView!
     
     var motionManager = CMMotionManager()
+    var dataSource = [
+        "Arroz",
+        "Feijão",
+        "Batata",
+        "Macarrão",
+        "Ovo"
+    ]
     
     @IBAction func changeColorScheme(_ sender: UISegmentedControl) {
         UserDefaults.standard.set(sender.selectedSegmentIndex, forKey: SettingsType.colorscheme.rawValue)
@@ -38,6 +45,9 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        pickerView.delegate = self
+        pickerView.dataSource = self
         
         // Detectar se device tem acelerometro e giroscopio
         
@@ -55,6 +65,9 @@ class SettingsViewController: UIViewController {
                 
             })
         }
+        
+        // pickerView.selectedRow(inComponent: 0) // Recupera o item selecionado no picker view
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,7 +89,30 @@ extension SettingsViewController: UITextFieldDelegate {
     }
 }
 
+extension SettingsViewController: UIPickerViewDelegate {
+    
+    // Populamos os valores que aparecerão no PickerView
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return dataSource[row]
+    }
+    
+    //
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print("Acabaram de comer ", dataSource[row])
+    }
+    
+}
 
+extension SettingsViewController: UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        // Quantos componentes existem no pickerview = colunas; like date
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return dataSource.count
+    }
+}
 
 
 
